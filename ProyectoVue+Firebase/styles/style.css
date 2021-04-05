@@ -1,0 +1,176 @@
+html body{
+	background-color: #202c39;
+}
+
+body::-webkit-scrollbar{
+	display: none;
+}
+
+/*Estilos de letras*/
+
+	/*LETRAS EN BLANCO*/
+.pwhite{
+	color: white;
+}
+
+	/*LETRAS EN VERDE*/
+.pgreen{
+	color: #42b883;
+}
+	/*LETRAS EN ROJO*/
+.pred{
+	color:#EA3737;
+}
+
+/*LETRAS ESTILO BOLD*/
+.pbold{
+	font-weight: bold;
+}
+
+/*ERRORES DE FORMULARIOS*/
+.Error{	
+	color: white;
+	font-weight: bold;
+	font-size: 13px;
+	background-color: #EA3737;
+	width: 100%;
+	text-align: center;
+}
+
+/*CORRECTOS DE FORMULARIOS*/
+.Correcto{	
+	color: white;
+	font-weight: bold;
+	font-size: 13px;
+	background-color: #42b883;
+	width: 100%;
+	text-align: center;
+}
+
+/*ALINEAR TEXTO*/
+.pcenter{
+	text-align: center;	
+}
+.pjustify{
+	text-align: justify;
+}
+
+/*ESTILO DE BOTONES DEFAULT*/
+.boton{
+	background-color: #42b883;
+	font-weight: bold;
+	margin-top: 5px;
+	color: white;
+	transition: 0.5s;
+	border:none;
+	padding: 5px;
+	width: 150px
+}
+
+
+
+
+.boton:hover{
+	background-color: #2A6E4F;
+}
+
+.boton2{
+	background-color: #42b883;
+	font-weight: bold;
+	color: white;
+	transition:0.5s;
+	border:none;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+.boton2:hover{
+	background-color: #2A6E4F;
+}
+/*ESTILO DE FONDO OSCURO*/
+.coscuro{
+	background-color: #273747;
+}
+/*ESTILO DE HR DIVISORA*/
+.divisor{
+	height: 4px;
+	border-radius: 100px;
+}
+
+/*BACKGROUND COLOR GRIS*/
+.bg-gris{
+	background-color: #26323E;
+}
+.bg-gris-claro{
+	background-color: #35495e;
+}
+
+/*Estilo Botones*/
+	/*Boton circular rojo*/
+.redboton{
+	background-color: #EA3737;
+	border-radius: 50px;
+	font-weight: bold ;
+	color: white;
+	width: 40px;
+	height: 40px;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    margin-top: 5%;
+
+}
+
+	/*Boton circular verde*/
+.greenboton{
+	background-color: #42b883;
+	border-radius: 50px;
+	font-weight: bold ;
+	color: white;
+	width: 40px;
+	height: 40px;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    margin-top: 5%;
+
+}
+
+	/*Boton circular azul*/
+.blueboton{
+	background-color: #3498DB;
+	border-radius: 50px;
+	font-weight: bold ;
+	color: white;
+	width: 40px;
+	height: 40px;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    margin-top: 5%;
+
+}
+
+
+@media(max-width: 767px){
+	.centrar{
+		width: 100%;
+		text-align: center;
+	}
+
+}

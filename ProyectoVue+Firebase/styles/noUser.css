@@ -1,0 +1,29 @@
+/*ESTILOS DEL HEADER SIN USUARIO*/
+.header-noUser{
+	background-color: #35495e;
+	color: #42b883 ;
+	opacity: 1;
+
+}
+
+.formulario{
+background-color: #35495e;
+padding: 2%;
+width: 400px;
+margin: auto;
+border-radius: 20px;
+font-weight: bold;
+
+}
+
+
+@media(max-width: 770px){
+	.pagina{
+		width: 100%;
+		text-align: center;
+	}
+
+	.titulo{
+		margin: auto;
+	}
+}
