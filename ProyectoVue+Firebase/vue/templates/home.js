@@ -1,3 +1,5 @@
+import {store} from './../store.js'
+////////////////////////////////////////////////////////////////////////////////
 const Home = { template: `
 
                  <div> 
@@ -138,6 +140,31 @@ const Home = { template: `
 
                         <!--FIN DE LAS CAJAS INFORMATIVAS-->
 
+
+
+
+
+
+                        <!--INICIO DE PORTAFOLIO-->
+                        <div class="container coscuro">
+
+                          <div class="pcenter pgreen">
+                              <h2 class="pt-3">Portafolio</h2>
+                          </div>
+
+                            <div class="flex-fill bd-highlight">
+                                <img v-for="(item, index) of videos" v-bind:src="item.imagenvideo" width="18%"
+                                class="mx-2 my-1 imagenPortafolio" @click="reproducirModal(index)">
+                            </div>
+                        </div>
+                        <!--FIN DE PORTAFOLIO-->
+
+
+
+
+
+
+
                         <!--INICIO DE LA CAJA MODAL-->
                         
                         <div id="my-modal" class="modal">
@@ -145,7 +172,7 @@ const Home = { template: `
                             <div class="header-modal">
                               
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" style="margin-top:0px">
                               <div  class="coscuro pgreen container p-5 mt-5 animate__animated animate__fadeInLeft">
                               <span @click="cierraModal" class="close">X</span>
                                 <h3 class="pcenter">Enviar Mensaje</h3>
@@ -154,11 +181,12 @@ const Home = { template: `
                                  <nav class="navbar navbar-expand-lg">
                                     <div class="container-fluid">
                                       <div class="input-group mx-1" >
-                                      <textarea name="comentarios" class="form-mensaje " placeholder="Mensaje..." id="umensaje" >
+                                      <textarea name="comentarios" class="form-mensaje " placeholder="Mensaje..." 
+                                      id="umensaje">
                                       </textarea>      
                                     </div>
 
-                                    <div class="navbar-collapse" id="navbarNavM">
+                                    <div class="navbar-collapse" id="navbarNavM" style="width:5%;">
                                       <ul class="navbar-nav">
                                         <li class="nav-item mx-1">
                                           <div class="input-group pt-1 ">
@@ -184,7 +212,54 @@ const Home = { template: `
                         </div>
                         </div>
                         <!--FINAL DE LA CAJA MODAL-->
-                   </div>
+
+
+                             <!--INICIO DE LA CAJA MODAL-->
+                        
+                        <div id="my-modalv" class="modal">
+                          <div class="modal-example">
+                            <div class="header-modal">
+                              
+                            </div>
+                            <div class="modal-body">
+                              <div  class="coscuro pgreen container p-5 mt-5 animate__animated animate__fadeInLeft"
+                              style="background:none">
+                              <span @click="cerrarModal" class="close">X</span>
+                                <div class="flex-fill bd-highlight">
+                                <h3>Nombre: <span id="nombreVideo" class="pwhite">nombre</span></h3>
+                                <h3>Clase: <span id="ClaseVideo" class="pwhite">Clase</span></h3>
+                                <h3>Subclase: <span id="SubClaseVideo" class="pwhite">subclase</span></h3>
+                                </div>
+                                
+
+                                <hr style="height: 4px;border-radius: 100px">
+
+                                 <nav class="navbar navbar-expand-lg">
+                                    <div class="container-fluid">
+                                      <div class="input-group mx-1" >
+                                      <iframe width="560" height="315" v-bind:src="'https://youtube.com/embed/'+linkVideo" 
+                                       title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+                                       clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                                       style="margin: auto">
+                                       </iframe>   
+                                    </div>
+                                  </div>
+                                </nav>
+                                <hr style="height: 4px;border-radius: 100px">
+                                <div class="Correcto fs-3"  
+                                id="mensajeEnviado">
+                                </div>
+
+                                <div class="Error fs-3"  
+                                id="mensajeError">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                        <!--FINAL DE LA CAJA MODAL-->
+
+      </div>
 
 
             `,methods: {
@@ -199,7 +274,27 @@ const Home = { template: `
                 ...Vuex.mapMutations(['irAdministrador']),
                 ...Vuex.mapMutations(['enviarMensaje']),
                 ...Vuex.mapMutations(['irVideos']),
-                
+/////////////////////////////////////////////////////////////////////////////////////////////
+                reproducirModal(index){
+                  var modal = document.getElementById('my-modalv');
+                  var nombre = document.getElementById('nombreVideo');
+                  var clase = document.getElementById('ClaseVideo');
+                  var subclase = document.getElementById('SubClaseVideo');
+                  
+                  store.state.linkVideo = store.state.videos[index].enlacevideo
+
+                  nombre.innerHTML = store.state.videos[index].nombrevideo
+                  clase.innerHTML = store.state.videos[index].clasevideo
+                  subclase.innerHTML = store.state.videos[index].subclasevideo
+                  
+                  modal.style.display = 'block';
+                },
+/////////////////////////////////////////////////////////////////////////////////////////////
+                cerrarModal(){
+                  var modal = document.getElementById('my-modalv');
+                  modal.style.display = 'none';
+                },
+/////////////////////////////////////////////////////////////////////////////////////////////                        
                 
             },
             //AQUI VAN LOS mapState
@@ -207,7 +302,10 @@ const Home = { template: `
                 ...Vuex.mapState(['nombre']),
                 ...Vuex.mapState(['descripcion']),
                 ...Vuex.mapState(['correo']),
+                ...Vuex.mapState(['videos']),
+                ...Vuex.mapState(['linkVideo'])
                 }
+
         }
 
 

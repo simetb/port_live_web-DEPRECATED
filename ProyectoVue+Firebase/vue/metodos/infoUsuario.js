@@ -72,5 +72,27 @@ function getTwitter(){
                         });
 
 }
+
+function getVideos(){
+    //Cargamos el usuario
+    var user = firebase.auth().currentUser;
+    //Cargamos los videos del usuario
+    firebase.database().ref('/videos/'+ user.uid).once('value').then(function(snapshot){
+        //Reiniciamos el array de videos
+        store.state.videos = [];
+        //Almacenamos la informacion
+        var videos = snapshot.val();
+        //Almacenamos la informacion de todos los videos por su key
+        for(let key in videos){
+            firebase.database().ref('/videos/'+user.uid+'/'+key).once('value').then(function(snapshot){
+                //Almacenamos la informacion del video
+                var infovideos = snapshot.val();
+                store.state.videos.push(infovideos); 
+
+            });
+        }
+        
+    });
+}
 export {getNombre,getCorreo,getDescripcion,getTelefono,getFotoPerfil,
-getFacebook,getInstagram,getTwitter}
+getFacebook,getInstagram,getTwitter,getVideos}

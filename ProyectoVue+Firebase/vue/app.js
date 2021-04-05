@@ -4,7 +4,7 @@ import {store} from './store.js';
 import {router} from './router.js';
 //Informacion del usuario
 import {getNombre,getCorreo,getDescripcion,getTelefono,getFotoPerfil,
-getFacebook,getInstagram,getTwitter} from './metodos/infoUsuario.js';
+getFacebook,getInstagram,getTwitter,getVideos} from './metodos/infoUsuario.js';
 //Animaciones
 import {animaHeader} from './metodos/animaciones.js';
 
@@ -24,7 +24,6 @@ const app = new Vue({
 //COMPRUEBA SESION ACTIVA
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-
     //Informacion Personal
     getNombre()
     getCorreo()
@@ -34,6 +33,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     getFacebook()
     getInstagram()
     getTwitter()
+    getVideos()
     //Animaciones
     animaHeader()
   } else {
